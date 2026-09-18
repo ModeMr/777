@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>⊀𝟕𝟕𝟕»</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:#010403;
+    color:#fff;
+    font-family:Tahoma,Arial,sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-3;
+
+    background:
+    radial-gradient(circle at 20% 10%,rgba(0,255,80,.13),transparent 30%),
+    radial-gradient(circle at 80% 80%,rgba(0,180,60,.08),transparent 35%),
+    #010403;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+
+    background-image:
+    linear-gradient(rgba(0,255,80,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,255,80,.035) 1px,transparent 1px);
+
+    background-size:40px 40px;
+
+    animation:gridMove 12s linear infinite;
+}
+
+@keyframes gridMove{
+    from{
+        background-position:0 0;
+    }
+
+    to{
+        background-position:0 40px;
+    }
+}
+
+/* =========================
+   MATRIX
+========================= */
+
+.matrix{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    opacity:.12;
+    overflow:hidden;
+}
+
+.matrix span{
+    position:absolute;
+    top:-100px;
+    color:#00ff66;
+    font-size:15px;
+    animation:matrixFall linear infinite;
+}
+
+@keyframes matrixFall{
+
+    0%{
+        transform:translateY(-100px);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+
+}
+
+/* =========================
+   COMMON
+========================= */
+
+.hidden{
+    display:none !important;
+}
+
+.container{
+    width:92%;
+    max-width:1000px;
+    margin:auto;
+}
+
+.green{
+    color:#00ff66;
+}
+
+.center{
+    text-align:center;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+#loginScreen{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+.loginBox{
+    width:100%;
+    max-width:450px;
+
+    padding:40px 25px;
+
+    text-align:center;
+
+    background:rgba(0,15,7,.88);
+
+    border:1px solid rgba(0,255,100,.35);
+
+    border-radius:28px;
+
+    box-shadow:
+    0 0 35px rgba(0,255,80,.12),
+    inset 0 0 30px rgba(0,255,80,.03);
+
+    backdrop-filter:blur(18px);
+
+    animation:boxIn 1s ease;
+}
+
+@keyframes boxIn{
+
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+.logo{
+    font-size:58px;
+    font-weight:900;
+
+    color:#00ff66;
+
+    text-shadow:
+    0 0 8px #00ff66,
+    0 0 25px #00ff66,
+    0 0 50px rgba(0,255,100,.4);
+
+    animation:logoGlow 2s infinite alternate;
+}
+
+@keyframes logoGlow{
+
+    from{
+        filter:brightness(.9);
+    }
+
+    to{
+        filter:brightness(1.4);
+    }
+
+}
+
+.hamo{
+    margin-top:8px;
+
+    font-size:26px;
+
+    color:#eee;
+
+    font-weight:bold;
+}
+
+.line{
+    width:180px;
+    height:2px;
+
+    margin:18px auto;
+
+    background:#00ff66;
+
+    box-shadow:0 0 15px #00ff66;
+}
+
+.loginText{
+    color:#888;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:13px;
+
+    background:#020805;
+
+    border:1px solid rgba(0,255,100,.3);
+
+    border-radius:13px;
+
+    color:white;
+
+    text-align:center;
+
+    outline:none;
+
+    font-family:inherit;
+
+    font-size:16px;
+
+    transition:.3s;
+}
+
+input:focus{
+    border-color:#00ff66;
+
+    box-shadow:
+    0 0 15px rgba(0,255,100,.2);
+}
+
+.btn{
+    width:100%;
+
+    padding:15px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:#00c94f;
+
+    color:#001b08;
+
+    font-family:inherit;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 25px rgba(0,255,100,.4);
+}
+
+.error{
+    color:#ff4040;
+    min-height:24px;
+    margin-top:12px;
+}
+
+/* =========================
+   USER SCREEN
+========================= */
+
+#userScreen{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+.userBox{
+    width:100%;
+    max-width:600px;
+
+    padding:35px 25px;
+
+    background:rgba(0,15,7,.9);
+
+    border:1px solid rgba(0,255,100,.3);
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:0 0 30px rgba(0,255,80,.1);
+}
+
+.userBox h2{
+    color:#00ff66;
+    margin-bottom:12px;
+}
+
+.userBox p{
+    color:#aaa;
+    margin-bottom:25px;
+    line-height:1.8;
+}
+
+/* =========================
+   MAIN WEBSITE
+========================= */
+
+#website{
+    display:none;
+}
+
+header{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:40px 20px;
+}
+
+.hero{
+    max-width:850px;
+}
+
+.tag{
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border:1px solid #00ff66;
+
+    border-radius:50px;
+
+    color:#00ff66;
+
+    margin-bottom:20px;
+
+    box-shadow:
+    0 0 15px rgba(0,255,100,.12);
+}
+
+.heroLogo{
+    font-size:clamp(55px,13vw,110px);
+
+    font-weight:900;
+
+    color:#00ff66;
+
+    text-shadow:
+    0 0 10px #00ff66,
+    0 0 35px #00ff66;
+
+    animation:glitch 4s infinite;
+}
+
+@keyframes glitch{
+
+    0%,90%,100%{
+        transform:none;
+    }
+
+    92%{
+        transform:skewX(5deg);
+    }
+
+    94%{
+        transform:translateX(-5px);
+    }
+
+    96%{
+        transform:translateX(5px);
+    }
+
+}
+
+.hero h2{
+    margin-top:10px;
+    font-size:28px;
+}
+
+.hero p{
+    color:#aaa;
+
+    line-height:2;
+
+    margin:20px auto;
+
+    max-width:700px;
+}
+
+.owner{
+    color:#00ff66;
+    font-size:20px;
+    margin-top:20px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+    padding:80px 20px;
+}
+
+.sectionTitle{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.sectionTitle h2{
+    color:#00ff66;
+    font-size:32px;
+
+    text-shadow:
+    0 0 15px rgba(0,255,100,.3);
+}
+
+.sectionTitle p{
+    color:#777;
+    margin-top:8px;
+}
+
+/* =========================
+   QUESTIONS
+========================= */
+
+.question{
+    margin-bottom:20px;
+
+    padding:22px;
+
+    background:rgba(0,255,100,.025);
+
+    border:1px solid rgba(0,255,100,.18);
+
+    border-radius:18px;
+
+    transition:.3s;
+}
+
+.question:hover{
+    border-color:#00ff66;
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 20px rgba(0,255,100,.07);
+}
+
+.question h3{
+    margin-bottom:15px;
+    line-height:1.7;
+}
+
+.option{
+    display:block;
+
+    padding:11px;
+
+    margin:8px 0;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.025);
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.option:hover{
+    background:rgba(0,255,100,.08);
+}
+
+.option input{
+    width:auto;
+    margin:0 8px 0 0;
+    accent-color:#00ff66;
+}
+
+#quizResult{
+    margin-top:20px;
+
+    text-align:center;
+
+    font-size:18px;
+
+    color:#00ff66;
+}
+
+/* =========================
+   TEAM
+========================= */
+
+.teamGrid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+}
+
+.member{
+    padding:25px 18px;
+
+    text-align:center;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(0,255,100,.06),
+        rgba(0,0,0,.3)
+    );
+
+    border:1px solid rgba(0,255,100,.2);
+
+    border-radius:20px;
+
+    transition:.35s;
+}
+
+.member:hover{
+    transform:
+    translateY(-8px)
+    scale(1.02);
+
+    border-color:#00ff66;
+
+    box-shadow:
+    0 0 25px rgba(0,255,100,.12);
+}
+
+.memberIcon{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.member h3{
+    color:#00ff66;
+    font-size:19px;
+}
+
+/* =========================
+   WORKS
+========================= */
+
+.works{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+}
+
+.work{
+    min-height:180px;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(0,255,100,.2);
+
+    background:
+    radial-gradient(
+        circle at center,
+        rgba(0,255,100,.09),
+        rgba(0,0,0,.3)
+    );
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.work:hover{
+    transform:scale(1.03);
+
+    border-color:#00ff66;
+}
+
+.workIcon{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.work h3{
+    color:#00ff66;
+    margin-bottom:8px;
+}
+
+.work p{
+    color:#888;
+    line-height:1.7;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.aboutBox{
+    padding:35px 25px;
+
+    background:rgba(0,255,100,.035);
+
+    border:1px solid rgba(0,255,100,.18);
+
+    border-radius:25px;
+
+    text-align:center;
+
+    line-height:2;
+
+    color:#aaa;
+}
+
+.aboutBox strong{
+    color:#00ff66;
+}
+
+/* =========================
+   WHATSAPP
+========================= */
+
+.whatsapp{
+    text-align:center;
+}
+
+.whatsapp a{
+    display:inline-block;
+
+    padding:15px 30px;
+
+    background:#00c94f;
+
+    color:#001b08;
+
+    text-decoration:none;
+
+    border-radius:14px;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.whatsapp a:hover{
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 0 25px rgba(0,255,100,.35);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:40px 20px;
+
+    text-align:center;
+
+    border-top:1px solid rgba(0,255,100,.1);
+
+    color:#777;
+}
+
+footer .hamoFooter{
+    color:#00ff66;
+
+    font-size:20px;
+
+    margin-top:8px;
+}
+
+/* =========================
+   SCROLL BUTTON
+========================= */
+
+.topBtn{
+    position:fixed;
+
+    bottom:20px;
+    left:20px;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:#00c94f;
+
+    color:#001b08;
+
+    border:0;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    display:none;
+
+    z-index:20;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .logo{
+        font-size:43px;
+    }
+
+    .hamo{
+        font-size:21px;
+    }
+
+    .hero h2{
+        font-size:22px;
+    }
+
+    section{
+        padding:60px 15px;
+    }
+
+    .sectionTitle h2{
+        font-size:27px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     MATRIX BACKGROUND
+========================= -->
+
+<div class="matrix">
+
+<span style="left:5%;animation-duration:7s;">010101</span>
+<span style="left:15%;animation-duration:9s;animation-delay:1s;">777</span>
+<span style="left:25%;animation-duration:6s;animation-delay:2s;">010101</span>
+<span style="left:35%;animation-duration:8s;animation-delay:1s;">CYBER</span>
+<span style="left:45%;animation-duration:7s;">777</span>
+<span style="left:55%;animation-duration:10s;animation-delay:2s;">010101</span>
+<span style="left:65%;animation-duration:6s;">TEAM</span>
+<span style="left:75%;animation-duration:8s;animation-delay:1s;">777</span>
+<span style="left:85%;animation-duration:7s;">010101</span>
+<span style="left:95%;animation-duration:9s;">CYBER</span>
+
+</div>
+
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<div id="loginScreen">
+
+    <div class="loginBox">
+
+        <div class="logo">
+            ⊀𝟕𝟕𝟕»
+        </div>
+
+        <div class="hamo">
+            ↝𝑲𝒊𝒏𝒈 𝑨𝒍𝒆𝒙⃝
+        </div>
+
+        <div class="line"></div>
+
+        <p class="loginText">
+            🔐 منطقة خاصة بفريق ⊀𝟕𝟕𝟕»
+        </p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="اكتب الباسورد..."
+        >
+
+        <button class="btn" onclick="checkPassword()">
+            دخول ⚡
+        </button>
+
+        <div class="error" id="loginError"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     USER NAME
+========================= -->
+
+<div id="userScreen" class="hidden">
+
+    <div class="userBox">
+
+        <h2>
+            أهلاً بيك 👋
+        </h2>
+
+        <p>
+            قبل ما تدخل للموقع،
+            اكتب اسمك عشان نرحب بيك.
+        </p>
+
+        <input
+            type="text"
+            id="visitorName"
+            placeholder="اكتب اسمك هنا..."
+        >
+
+        <button class="btn" onclick="startWebsite()">
+            دخول للموقع 🚀
+        </button>
+
+        <div class="error" id="nameError"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     WEBSITE
+========================= -->
+
+<div id="website">
+
+
+<header>
+
+    <div class="hero">
+
+        <div class="tag">
+            مرحباً <span id="welcomeName"></span> 👋
+        </div>
+
+        <div class="heroLogo">
+            ⊀𝟕𝟕𝟕»
+        </div>
+
+        <h2>
+            𝑲𝒊𝒏𝒈 𝑨𝒍𝒆𝒙⃝🇪🇬
+        </h2>
+
+        <p>
+            مساحة فريق مهتم بالأمن السيبراني،
+            البرمجة، والتوعية الرقمية والهاكينج الأخلاقي.
+            <br>
+            المعرفة قوة لما تستخدم في الخير.
+        </p>
+
+        <div class="owner">
+            👑 The Owner
+            <br>
+            𝑲𝒊𝒏𝒈 𝑨𝒍𝒆𝒙⃝🇪🇬
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     QUIZ
+========================= -->
+
+<section id="quiz">
+
+    <div class="container">
+
+        <div class="sectionTitle">
+
+            <h2>
+                🧠 اختبار الأمن السيبراني
+            </h2>
+
+            <p>
+                جاوب على الأسئلة السبعة
+            </p>
+
+        </div>
+
+
+        <div class="question">
+
+            <h3>
+                1 - ما المقصود بالـ Cyber Security؟
+            </h3>
+
+            <label class="option">
+                <input type="radio" name="q1" value="1">
+                حماية الأنظمة والبيانات من التهديدات
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="0">
+                لعبة على الكمبيوتر
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q1" value="0">
+                برنامج لتعديل الصور
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h3>
+                2 - ما هو الـ Phishing؟
+            </h3>
+
+            <label class="option">
+                <input type="radio" name="q2" value="1">
+                محاولة خداع المستخدم للحصول على معلومات
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="0">
+                نوع من أنواع الألعاب
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q2" value="0">
+                لغة برمجة
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h3>
+                3 - ما أهمية كلمة المرور القوية؟
+            </h3>
+
+            <label class="option">
+                <input type="radio" name="q3" value="1">
+                تقليل احتمالية الوصول غير المصرح به
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="0">
+                جعل الجهاز أسرع
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q3" value="0">
+                زيادة مساحة التخزين
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h3>
+                4 - ما معنى Ethical Hacking؟
+            </h3>
+
+            <label class="option">
+                <input type="radio" name="q4" value="1">
+                اختبار الأنظمة بإذن بهدف تحسين حمايتها
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="0">
+                اختراق أي شخص بدون إذن
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q4" value="0">
+                سرقة الحسابات
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h3>
+                5 - ما فائدة تحديث البرامج؟
+            </h3>
+
+            <label class="option">
+                <input type="radio" name="q5" value="1">
+                إصلاح أخطاء وثغرات أمنية
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="0">
+                تغيير اسم الجهاز فقط
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q5" value="0">
+                حذف الإنترنت
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h3>
+                6 - ماذا تفعل إذا وصلتك رسالة مشبوهة؟
+            </h3>
+
+            <label class="option">
+                <input type="radio" name="q6" value="1">
+                أتأكد من مصدرها ولا أضغط على الروابط المشبوهة
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="0">
+                أرسل بياناتي مباشرة
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q6" value="0">
+                أشاركها مع الجميع
+            </label>
+
+        </div>
+
+
+        <div class="question">
+
+            <h3>
+                7 - ما أهم قاعدة في الهاكينج الأخلاقي؟
+            </h3>
+
+            <label class="option">
+                <input type="radio" name="q7" value="1">
+                الحصول على إذن واحترام القانون
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="0">
+                اختراق أي نظام يعجبني
+            </label>
+
+            <label class="option">
+                <input type="radio" name="q7" value="0">
+                نشر بيانات الآخرين
+            </label>
+
+        </div>
+
+
+        <button class="btn" onclick="checkQuiz()">
+            إنهاء الاختبار ⚡
+        </button>
+
+        <div id="quizResult"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TEAM
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="sectionTitle">
+
+            <h2>
+                👑 أعضاء التيم
+            </h2>
+
+            <p>
+                ⊀𝟕𝟕𝟕»
+            </p>
+
+        </div>
+
+
+        <div class="teamGrid">
+
+
+            <div class="member">
+
+                <div class="memberIcon">
+                    👑
+                </div>
+
+                <h3>
+                    𝑲𝒊𝒏𝒈 𝑨𝒍𝒆𝒙⃝🇪🇬
+                </h3>
+
+                <p>
+                    The Owner
+                </p>
+
+            </div>
+
+
+            <div class="member">
+
+                <div class="memberIcon">
+                    ⚡
+                </div>
+
+                <h3>
+                    جو الحاكم⊀𝟕𝟕𝟕»
+                </h3>
+
+                <p>
+                    Team Member
+                </p>
+
+            </div>
+
+
+            <div class="member">
+
+                <div class="memberIcon">
+                    💻
+                </div>
+
+                <h3>
+                    ڪيمو اليڪس⊀𝟕𝟕𝟕»
+                </h3>
+
+                <p>
+                    Team Member
+                </p>
+
+            </div>
+
+
+            <div class="member">
+
+                <div class="memberIcon">
+                    🔥
+                </div>
+
+                <h3>
+                    بودا المشاكس⊀𝟕𝟕𝟕»🇪🇬
+                </h3>
+
+                <p>
+                    Team Member
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WORKS
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="sectionTitle">
+
+            <h2>
+                💻 معرض أعمال التيم
+            </h2>
+
+            <p>
+                مشاريع ومجالات الفريق
+            </p>
+
+        </div>
+
+
+        <div class="works">
+
+
+            <div class="work">
+
+                <div class="workIcon">
+                    🛡️
+                </div>
+
+                <h3>
+                    Cyber Security
+                </h3>
+
+                <p>
+                    توعية وحماية الأنظمة
+                    والمعلومات الرقمية.
+                </p>
+
+            </div>
+
+
+            <div class="work">
+
+                <div class="workIcon">
+                    💻
+                </div>
+
+                <h3>
+                    Web Development
+                </h3>
+
+                <p>
+                    تصميم وتطوير مواقع
+                    وصفحات ويب حديثة.
+                </p>
+
+            </div>
+
+
+            <div class="work">
+
+                <div class="workIcon">
+                    🔐
+                </div>
+
+                <h3>
+                    Ethical Hacking
+                </h3>
+
+                <p>
+                    اختبار أمان الأنظمة
+                    في نطاق مصرح به.
+                </p>
+
+            </div>
+
+
+            <div class="work">
+
+                <div class="workIcon">
+                    🎨
+                </div>
+
+                <h3>
+                    Team Branding
+                </h3>
+
+                <p>
+                    هوية وتصميمات خاصة
+                    بفريق ⊀𝟕𝟕𝟕».
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="sectionTitle">
+
+            <h2>
+                ⚡ عن التيم
+            </h2>
+
+        </div>
+
+
+        <div class="aboutBox">
+
+            <strong>
+                ⊀𝟕𝟕𝟕»
+            </strong>
+
+            مش مجرد اسم،
+            دي هوية فريق بيحب التكنولوجيا
+            والتعلم والتطور.
+
+            <br><br>
+
+            بنهتم بالأمن السيبراني والبرمجة
+            والتوعية الرقمية،
+            وبنؤمن إن المعرفة الحقيقية
+            تستخدم في الخير والحماية.
+
+            <br><br>
+
+            <strong>
+                القوة في العلم،
+                والاحتراف في الأخلاق.
+            </strong>
+
+            <br><br>
+
+            الهاكينج الأخلاقي هدفه حماية الأنظمة
+            واكتشاف نقاط الضعف بإذن أصحابها،
+            مش الإضرار بالناس أو سرقة بياناتهم.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WHATSAPP
+========================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="whatsapp">
+
+            <div class="sectionTitle">
+
+                <h2>
+                    📱 قناة التيم
+                </h2>
+
+                <p>
+                    تابع آخر أخبار وتحديثات التيم
+                </p>
+
+            </div>
+
+
+            <a
+                href="https://whatsapp.com/channel/0029Vb3NahtDuMRfVFy1KN0E"
+                target="_blank"
+            >
+                دخول قناة الواتساب 🚀
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+        ⊀𝟕𝟕𝟕»
+    </div>
+
+    <div class="hamoFooter">
+        Editor The Web : Hamo 💗
+    </div>
+
+    <div style="margin-top:12px;">
+        Ethical Hacking • Cyber Security • Team
+    </div>
+
+</footer>
+
+
+</div>
+
+
+<!-- TOP BUTTON -->
+
+<button
+    class="topBtn"
+    id="topBtn"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})"
+>
+    ↑
+</button>
+
+
+<script>
+
+/* =========================
+   PASSWORD
+========================= */
+
+function checkPassword(){
+
+    const password =
+        document.getElementById("password").value;
+
+    const error =
+        document.getElementById("loginError");
+
+    if(password === "777"){
+
+        document.getElementById("loginScreen")
+            .classList.add("hidden");
+
+        document.getElementById("userScreen")
+            .classList.remove("hidden");
+
+    }else{
+
+        error.textContent =
+            "الباسورد غلط ❌ حاول تاني";
+
+    }
+
+}
+
+
+/* Enter للدخول */
+
+document
+.getElementById("password")
+.addEventListener("keydown",function(e){
+
+    if(e.key === "Enter"){
+        checkPassword();
+    }
+
+});
+
+
+/* =========================
+   USER NAME
+========================= */
+
+function startWebsite(){
+
+    const name =
+        document.getElementById("visitorName")
+        .value.trim();
+
+    const error =
+        document.getElementById("nameError");
+
+    if(name === ""){
+
+        error.textContent =
+            "اكتب اسمك الأول 👀";
+
+        return;
+    }
+
+    document.getElementById("welcomeName")
+        .textContent = name;
+
+    document.getElementById("userScreen")
+        .classList.add("hidden");
+
+    document.getElementById("website")
+        .style.display = "block";
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* =========================
+   QUIZ
+========================= */
+
+function checkQuiz(){
+
+    let score = 0;
+
+    for(let i=1;i<=7;i++){
+
+        const answer =
+            document.querySelector(
+                'input[name="q'+i+'"]:checked'
+            );
+
+        if(answer){
+            score += Number(answer.value);
+        }
+
+    }
+
+    const result =
+        document.getElementById("quizResult");
+
+    if(score === 7){
+
+        result.innerHTML =
+        "🔥 جامد! 7/7 — إجاباتك كلها صحيحة.";
+
+    }else if(score >= 5){
+
+        result.innerHTML =
+        "⚡ ممتاز! نتيجتك "+score+"/7";
+
+    }else if(score >= 3){
+
+        result.innerHTML =
+        "💻 كويس، نتيجتك "+score+"/7 — كمل تعلم.";
+
+    }else{
+
+        result.innerHTML =
+        "🛡️ نتيجتك "+score+"/7 — الأمن السيبراني محتاج ممارسة وتعلم.";
+
+    }
+
+}
+
+
+/* =========================
+   TOP BUTTON
+========================= */
+
+window.addEventListener("scroll",function(){
+
+    const btn =
+        document.getElementById("topBtn");
+
+    if(window.scrollY > 500){
+        btn.style.display = "block";
+    }else{
+        btn.style.display = "none";
+    }
+
+});
+
+</script>
+
+
+</body>
+</html>
