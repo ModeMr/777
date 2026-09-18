@@ -1,1613 +1,2401 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>⊀𝟕𝟕𝟕»</title>
-
-<style>
-
-/* =========================
-   RESET
-========================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    min-height:100vh;
-    background:#010403;
-    color:#fff;
-    font-family:Tahoma,Arial,sans-serif;
-    overflow-x:hidden;
-}
-
-/* =========================
-   BACKGROUND
-========================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-3;
-
-    background:
-    radial-gradient(circle at 20% 10%,rgba(0,255,80,.13),transparent 30%),
-    radial-gradient(circle at 80% 80%,rgba(0,180,60,.08),transparent 35%),
-    #010403;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-2;
-
-    background-image:
-    linear-gradient(rgba(0,255,80,.035) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,255,80,.035) 1px,transparent 1px);
-
-    background-size:40px 40px;
-
-    animation:gridMove 12s linear infinite;
-}
-
-@keyframes gridMove{
-    from{
-        background-position:0 0;
-    }
-
-    to{
-        background-position:0 40px;
-    }
-}
-
-/* =========================
-   MATRIX
-========================= */
-
-.matrix{
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    pointer-events:none;
-    opacity:.12;
-    overflow:hidden;
-}
-
-.matrix span{
-    position:absolute;
-    top:-100px;
-    color:#00ff66;
-    font-size:15px;
-    animation:matrixFall linear infinite;
-}
-
-@keyframes matrixFall{
-
-    0%{
-        transform:translateY(-100px);
-        opacity:0;
-    }
-
-    20%{
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(110vh);
-        opacity:0;
-    }
-
-}
-
-/* =========================
-   COMMON
-========================= */
-
-.hidden{
-    display:none !important;
-}
-
-.container{
-    width:92%;
-    max-width:1000px;
-    margin:auto;
-}
-
-.green{
-    color:#00ff66;
-}
-
-.center{
-    text-align:center;
-}
-
-/* =========================
-   LOGIN
-========================= */
-
-#loginScreen{
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:20px;
-}
-
-.loginBox{
-    width:100%;
-    max-width:450px;
-
-    padding:40px 25px;
-
-    text-align:center;
-
-    background:rgba(0,15,7,.88);
-
-    border:1px solid rgba(0,255,100,.35);
-
-    border-radius:28px;
-
-    box-shadow:
-    0 0 35px rgba(0,255,80,.12),
-    inset 0 0 30px rgba(0,255,80,.03);
-
-    backdrop-filter:blur(18px);
-
-    animation:boxIn 1s ease;
-}
-
-@keyframes boxIn{
-
-    from{
-        opacity:0;
-        transform:translateY(40px) scale(.9);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-
-}
-
-.logo{
-    font-size:58px;
-    font-weight:900;
-
-    color:#00ff66;
-
-    text-shadow:
-    0 0 8px #00ff66,
-    0 0 25px #00ff66,
-    0 0 50px rgba(0,255,100,.4);
-
-    animation:logoGlow 2s infinite alternate;
-}
-
-@keyframes logoGlow{
-
-    from{
-        filter:brightness(.9);
-    }
-
-    to{
-        filter:brightness(1.4);
-    }
-
-}
-
-.hamo{
-    margin-top:8px;
-
-    font-size:26px;
-
-    color:#eee;
-
-    font-weight:bold;
-}
-
-.line{
-    width:180px;
-    height:2px;
-
-    margin:18px auto;
-
-    background:#00ff66;
-
-    box-shadow:0 0 15px #00ff66;
-}
-
-.loginText{
-    color:#888;
-    margin-bottom:25px;
-}
-
-input{
-    width:100%;
-
-    padding:15px;
-
-    margin-bottom:13px;
-
-    background:#020805;
-
-    border:1px solid rgba(0,255,100,.3);
-
-    border-radius:13px;
-
-    color:white;
-
-    text-align:center;
-
-    outline:none;
-
-    font-family:inherit;
-
-    font-size:16px;
-
-    transition:.3s;
-}
-
-input:focus{
-    border-color:#00ff66;
-
-    box-shadow:
-    0 0 15px rgba(0,255,100,.2);
-}
-
-.btn{
-    width:100%;
-
-    padding:15px;
-
-    border:0;
-
-    border-radius:13px;
-
-    background:#00c94f;
-
-    color:#001b08;
-
-    font-family:inherit;
-
-    font-size:17px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-    0 0 25px rgba(0,255,100,.4);
-}
-
-.error{
-    color:#ff4040;
-    min-height:24px;
-    margin-top:12px;
-}
-
-/* =========================
-   USER SCREEN
-========================= */
-
-#userScreen{
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:20px;
-}
-
-.userBox{
-    width:100%;
-    max-width:600px;
-
-    padding:35px 25px;
-
-    background:rgba(0,15,7,.9);
-
-    border:1px solid rgba(0,255,100,.3);
-
-    border-radius:25px;
-
-    text-align:center;
-
-    box-shadow:0 0 30px rgba(0,255,80,.1);
-}
-
-.userBox h2{
-    color:#00ff66;
-    margin-bottom:12px;
-}
-
-.userBox p{
-    color:#aaa;
-    margin-bottom:25px;
-    line-height:1.8;
-}
-
-/* =========================
-   MAIN WEBSITE
-========================= */
-
-#website{
-    display:none;
-}
-
-header{
-    min-height:100vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:40px 20px;
-}
-
-.hero{
-    max-width:850px;
-}
-
-.tag{
-    display:inline-block;
-
-    padding:8px 18px;
-
-    border:1px solid #00ff66;
-
-    border-radius:50px;
-
-    color:#00ff66;
-
-    margin-bottom:20px;
-
-    box-shadow:
-    0 0 15px rgba(0,255,100,.12);
-}
-
-.heroLogo{
-    font-size:clamp(55px,13vw,110px);
-
-    font-weight:900;
-
-    color:#00ff66;
-
-    text-shadow:
-    0 0 10px #00ff66,
-    0 0 35px #00ff66;
-
-    animation:glitch 4s infinite;
-}
-
-@keyframes glitch{
-
-    0%,90%,100%{
-        transform:none;
-    }
-
-    92%{
-        transform:skewX(5deg);
-    }
-
-    94%{
-        transform:translateX(-5px);
-    }
-
-    96%{
-        transform:translateX(5px);
-    }
-
-}
-
-.hero h2{
-    margin-top:10px;
-    font-size:28px;
-}
-
-.hero p{
-    color:#aaa;
-
-    line-height:2;
-
-    margin:20px auto;
-
-    max-width:700px;
-}
-
-.owner{
-    color:#00ff66;
-    font-size:20px;
-    margin-top:20px;
-}
-
-/* =========================
-   SECTIONS
-========================= */
-
-section{
-    padding:80px 20px;
-}
-
-.sectionTitle{
-    text-align:center;
-    margin-bottom:40px;
-}
-
-.sectionTitle h2{
-    color:#00ff66;
-    font-size:32px;
-
-    text-shadow:
-    0 0 15px rgba(0,255,100,.3);
-}
-
-.sectionTitle p{
-    color:#777;
-    margin-top:8px;
-}
-
-/* =========================
-   QUESTIONS
-========================= */
-
-.question{
-    margin-bottom:20px;
-
-    padding:22px;
-
-    background:rgba(0,255,100,.025);
-
-    border:1px solid rgba(0,255,100,.18);
-
-    border-radius:18px;
-
-    transition:.3s;
-}
-
-.question:hover{
-    border-color:#00ff66;
-
-    transform:translateY(-3px);
-
-    box-shadow:
-    0 0 20px rgba(0,255,100,.07);
-}
-
-.question h3{
-    margin-bottom:15px;
-    line-height:1.7;
-}
-
-.option{
-    display:block;
-
-    padding:11px;
-
-    margin:8px 0;
-
-    border-radius:10px;
-
-    background:rgba(255,255,255,.025);
-
-    cursor:pointer;
-
-    transition:.2s;
-}
-
-.option:hover{
-    background:rgba(0,255,100,.08);
-}
-
-.option input{
-    width:auto;
-    margin:0 8px 0 0;
-    accent-color:#00ff66;
-}
-
-#quizResult{
-    margin-top:20px;
-
-    text-align:center;
-
-    font-size:18px;
-
-    color:#00ff66;
-}
-
-/* =========================
-   TEAM
-========================= */
-
-.teamGrid{
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-
-    gap:20px;
-}
-
-.member{
-    padding:25px 18px;
-
-    text-align:center;
-
-    background:
-    linear-gradient(
-        145deg,
-        rgba(0,255,100,.06),
-        rgba(0,0,0,.3)
-    );
-
-    border:1px solid rgba(0,255,100,.2);
-
-    border-radius:20px;
-
-    transition:.35s;
-}
-
-.member:hover{
-    transform:
-    translateY(-8px)
-    scale(1.02);
-
-    border-color:#00ff66;
-
-    box-shadow:
-    0 0 25px rgba(0,255,100,.12);
-}
-
-.memberIcon{
-    font-size:38px;
-    margin-bottom:12px;
-}
-
-.member h3{
-    color:#00ff66;
-    font-size:19px;
-}
-
-/* =========================
-   WORKS
-========================= */
-
-.works{
-    display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-
-    gap:20px;
-}
-
-.work{
-    min-height:180px;
-
-    padding:25px;
-
-    border-radius:20px;
-
-    border:1px solid rgba(0,255,100,.2);
-
-    background:
-    radial-gradient(
-        circle at center,
-        rgba(0,255,100,.09),
-        rgba(0,0,0,.3)
-    );
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    transition:.3s;
-}
-
-.work:hover{
-    transform:scale(1.03);
-
-    border-color:#00ff66;
-}
-
-.workIcon{
-    font-size:45px;
-    margin-bottom:15px;
-}
-
-.work h3{
-    color:#00ff66;
-    margin-bottom:8px;
-}
-
-.work p{
-    color:#888;
-    line-height:1.7;
-}
-
-/* =========================
-   ABOUT
-========================= */
-
-.aboutBox{
-    padding:35px 25px;
-
-    background:rgba(0,255,100,.035);
-
-    border:1px solid rgba(0,255,100,.18);
-
-    border-radius:25px;
-
-    text-align:center;
-
-    line-height:2;
-
-    color:#aaa;
-}
-
-.aboutBox strong{
-    color:#00ff66;
-}
-
-/* =========================
-   WHATSAPP
-========================= */
-
-.whatsapp{
-    text-align:center;
-}
-
-.whatsapp a{
-    display:inline-block;
-
-    padding:15px 30px;
-
-    background:#00c94f;
-
-    color:#001b08;
-
-    text-decoration:none;
-
-    border-radius:14px;
-
-    font-weight:bold;
-
-    transition:.3s;
-}
-
-.whatsapp a:hover{
-    transform:translateY(-4px);
-
-    box-shadow:
-    0 0 25px rgba(0,255,100,.35);
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    padding:40px 20px;
-
-    text-align:center;
-
-    border-top:1px solid rgba(0,255,100,.1);
-
-    color:#777;
-}
-
-footer .hamoFooter{
-    color:#00ff66;
-
-    font-size:20px;
-
-    margin-top:8px;
-}
-
-/* =========================
-   SCROLL BUTTON
-========================= */
-
-.topBtn{
-    position:fixed;
-
-    bottom:20px;
-    left:20px;
-
-    width:45px;
-    height:45px;
-
-    border-radius:50%;
-
-    background:#00c94f;
-
-    color:#001b08;
-
-    border:0;
-
-    cursor:pointer;
-
-    font-size:20px;
-
-    display:none;
-
-    z-index:20;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:600px){
-
-    .logo{
-        font-size:43px;
-    }
-
-    .hamo{
-        font-size:21px;
-    }
-
-    .hero h2{
-        font-size:22px;
-    }
-
-    section{
-        padding:60px 15px;
-    }
-
-    .sectionTitle h2{
-        font-size:27px;
-    }
-
-}
-
-</style>
-</head>
-
-
-<body>
-
-
+<!DOCTYPE html>  
+<html lang="ar" dir="rtl">  
+  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  
+<title>إلى حورية 💗</title>  
+  
+<style>  
+  
+*{  
+    margin:0;  
+    padding:0;  
+    box-sizing:border-box;  
+}  
+  
+html{  
+    scroll-behavior:smooth;  
+}  
+  
+body{  
+    font-family:Tahoma, Arial, sans-serif;  
+    background:#090008;  
+    color:white;  
+    overflow-x:hidden;  
+}  
+  
+body::before{  
+    content:"";  
+    position:fixed;  
+    inset:0;  
+    z-index:-3;  
+  
+    background:  
+    radial-gradient(circle at 50% 20%, #8d0648 0%, transparent 35%),  
+    radial-gradient(circle at 10% 80%, #4e0030 0%, transparent 35%),  
+    radial-gradient(circle at 90% 70%, #390021 0%, transparent 35%),  
+    #090008;  
+}  
+  
+body::after{  
+    content:"";  
+    position:fixed;  
+    inset:0;  
+    z-index:-2;  
+    pointer-events:none;  
+  
+    background:  
+    radial-gradient(circle, rgba(255,90,160,.13) 1px, transparent 1px);  
+  
+    background-size:35px 35px;  
+    animation:stars 12s linear infinite;  
+}  
+  
+@keyframes stars{  
+    from{transform:translateY(0);}  
+    to{transform:translateY(35px);}  
+}  
+  
+.page{  
+    min-height:100vh;  
+    padding:35px 18px 80px;  
+  
+    display:flex;  
+    justify-content:center;  
+    align-items:center;  
+}  
+  
+.card{  
+    width:100%;  
+    max-width:650px;  
+    text-align:center;  
+}  
+  
+/* =========================  
+   الباسورد  
+========================= */  
+  
+.password-box{  
+    width:100%;  
+    max-width:430px;  
+    margin:auto;  
+  
+    padding:35px 25px;  
+  
+    border-radius:30px;  
+  
+    background:  
+    linear-gradient(  
+        145deg,  
+        rgba(255,255,255,.10),  
+        rgba(255,30,120,.08)  
+    );  
+  
+    border:1px solid rgba(255,150,200,.35);  
+  
+    box-shadow:  
+    0 0 35px rgba(255,20,110,.25),  
+    inset 0 0 25px rgba(255,80,160,.08);  
+  
+    backdrop-filter:blur(10px);  
+  
+    animation:appear .8s ease;  
+}  
+  
+.password-heart{  
+    font-size:55px;  
+    margin-bottom:15px;  
+    animation:pulse 1.5s infinite;  
+}  
+  
+.password-title{  
+    color:#ffb6d5;  
+    font-size:30px;  
+    margin-bottom:12px;  
+  
+    text-shadow:  
+    0 0 12px #ff1977,  
+    0 0 30px rgba(255,25,119,.7);  
+}  
+  
+.password-subtitle{  
+    color:#ffe5ef;  
+    font-size:17px;  
+    line-height:1.8;  
+    margin-bottom:25px;  
+}  
+  
+.password-input{  
+    width:100%;  
+    padding:15px 18px;  
+  
+    border-radius:18px;  
+  
+    border:1px solid rgba(255,150,200,.5);  
+  
+    background:rgba(0,0,0,.25);  
+  
+    color:white;  
+  
+    outline:none;  
+  
+    text-align:center;  
+  
+    font-size:18px;  
+  
+    margin-bottom:15px;  
+}  
+  
+.password-input::placeholder{  
+    color:rgba(255,255,255,.6);  
+}  
+  
+.password-input:focus{  
+    border-color:#ff5ba0;  
+  
+    box-shadow:  
+    0 0 15px rgba(255,40,130,.35);  
+}  
+  
+.password-error{  
+    display:none;  
+  
+    margin-top:15px;  
+  
+    color:#ff9fc2;  
+  
+    font-size:18px;  
+  
+    animation:shake .35s ease;  
+}  
+  
+@keyframes shake{  
+    0%,100%{transform:translateX(0);}  
+    25%{transform:translateX(-8px);}  
+    75%{transform:translateX(8px);}  
+}  
+  
+/* =========================  
+   البداية  
+========================= */  
+  
+.start-box{  
+    padding:35px 20px;  
+    animation:appear 1.2s ease;  
+}  
+  
+.small-heart{  
+    font-size:45px;  
+    animation:pulse 1.5s infinite;  
+}  
+  
+@keyframes pulse{  
+    0%,100%{transform:scale(1);}  
+    50%{transform:scale(1.15);}  
+}  
+  
+.main-name{  
+    margin-top:15px;  
+    font-size:60px;  
+    color:#ffb6d5;  
+  
+    text-shadow:  
+    0 0 10px #ff1977,  
+    0 0 30px #ff1977,  
+    0 0 60px rgba(255,25,119,.7);  
+}  
+  
+.signature{  
+    margin-top:12px;  
+    font-size:27px;  
+    color:#ffd5e5;  
+    font-style:italic;  
+}  
+  
+.love{  
+    margin-top:8px;  
+    font-size:25px;  
+    color:#ff79ad;  
+}  
+  
+.start-text{  
+    margin:35px 0;  
+    font-size:20px;  
+    line-height:2;  
+    color:#ffe7f0;  
+}  
+  
+.glow-button{  
+    border:0;  
+    color:white;  
+    font-size:19px;  
+    font-weight:bold;  
+  
+    padding:17px 32px;  
+  
+    border-radius:60px;  
+  
+    background:  
+    linear-gradient(135deg,#ff176f,#ff5ba0);  
+  
+    box-shadow:  
+    0 0 15px #ff176f,  
+    0 0 40px rgba(255,23,111,.4);  
+  
+    cursor:pointer;  
+  
+    transition:.25s;  
+}  
+  
+.glow-button:hover{  
+    transform:translateY(-3px) scale(1.03);  
+}  
+  
+.glow-button:active{  
+    transform:scale(.94);  
+}  
+  
+/* =========================  
+   العناوين  
+========================= */  
+  
+h1{  
+    color:#ffb8d5;  
+    font-size:34px;  
+    line-height:1.5;  
+  
+    text-shadow:  
+    0 0 12px #ff1977,  
+    0 0 30px rgba(255,25,119,.7);  
+  
+    margin-bottom:25px;  
+}  
+  
+.section-title{  
+    font-size:30px;  
+    color:#ffb4d2;  
+    margin:45px 0 20px;  
+}  
+  
+/* =========================  
+   الرسائل  
+========================= */  
+  
+.message-card{  
+    min-height:180px;  
+  
+    padding:30px 22px;  
+  
+    display:flex;  
+    justify-content:center;  
+    align-items:center;  
+  
+    border-radius:30px;  
+  
+    background:  
+    linear-gradient(  
+        135deg,  
+        rgba(255,255,255,.10),  
+        rgba(255,30,120,.07)  
+    );  
+  
+    border:1px solid rgba(255,150,200,.35);  
+  
+    box-shadow:  
+    inset 0 0 25px rgba(255,80,160,.08),  
+    0 0 35px rgba(255,20,110,.20);  
+  
+    backdrop-filter:blur(8px);  
+}  
+  
+.message-text{  
+    font-size:24px;  
+    line-height:2;  
+    color:#fff0f6;  
+  
+    text-shadow:  
+    0 0 10px rgba(255,100,170,.4);  
+  
+    animation:messageIn .7s ease;  
+}  
+  
+@keyframes messageIn{  
+    from{  
+        opacity:0;  
+        transform:translateY(25px) scale(.94);  
+    }  
+  
+    to{  
+        opacity:1;  
+        transform:translateY(0) scale(1);  
+    }  
+}  
+  
+.progress{  
+    margin:18px auto;  
+    width:80%;  
+    height:6px;  
+  
+    border-radius:20px;  
+  
+    background:rgba(255,255,255,.12);  
+    overflow:hidden;  
+}  
+  
+.progress-bar{  
+    height:100%;  
+    width:12.5%;  
+  
+    border-radius:20px;  
+  
+    background:#ff4d91;  
+  
+    box-shadow:0 0 12px #ff4d91;  
+  
+    transition:.5s;  
+}  
+  
+/* =========================  
+   عداد الوقت الجديد  
+========================= */  
+  
+.love-counter{  
+    margin:25px 0 35px;  
+    padding:25px 15px;  
+  
+    border-radius:30px;  
+  
+    background:  
+    linear-gradient(  
+        145deg,  
+        rgba(255,255,255,.10),  
+        rgba(255,30,120,.08)  
+    );  
+  
+    border:1px solid rgba(255,150,200,.35);  
+  
+    box-shadow:  
+    0 0 30px rgba(255,20,110,.2),  
+    inset 0 0 25px rgba(255,80,160,.08);  
+  
+    backdrop-filter:blur(8px);  
+}  
+  
+.counter-title{  
+    color:#ffd7e7;  
+    font-size:19px;  
+    margin-bottom:20px;  
+}  
+  
+.counter-grid{  
+    display:grid;  
+    grid-template-columns:repeat(4,1fr);  
+    gap:8px;  
+}  
+  
+.counter-box{  
+    padding:13px 5px;  
+    border-radius:18px;  
+  
+    background:rgba(0,0,0,.22);  
+    border:1px solid rgba(255,120,180,.25);  
+}  
+  
+.counter-number{  
+    display:block;  
+  
+    color:#ff9fc5;  
+    font-size:25px;  
+    font-weight:bold;  
+  
+    text-shadow:0 0 12px #ff1977;  
+}  
+  
+.counter-label{  
+    color:#ffe1ec;  
+    font-size:12px;  
+}  
+  
+.counter-date{  
+    margin-top:16px;  
+    color:#ffb6d5;  
+    font-size:14px;  
+}  
+  
+/* =========================  
+   الهدية  
+========================= */  
+  
+.gift-area{  
+    margin-top:40px;  
+}  
+  
+.gift{  
+    width:190px;  
+    height:180px;  
+  
+    position:relative;  
+  
+    margin:0 auto 25px;  
+  
+    animation:giftFloat 2s ease-in-out infinite;  
+}  
+  
+@keyframes giftFloat{  
+    0%,100%{transform:translateY(0);}  
+    50%{transform:translateY(-10px);}  
+}  
+  
+.gift-box{  
+    position:absolute;  
+    bottom:0;  
+    left:10px;  
+  
+    width:170px;  
+    height:105px;  
+  
+    border-radius:12px;  
+  
+    background:  
+    linear-gradient(  
+        135deg,  
+        #ff397f,  
+        #ff78ad  
+    );  
+  
+    box-shadow:  
+    0 0 25px rgba(255,30,120,.65);  
+}  
+  
+.gift-lid{  
+    position:absolute;  
+  
+    top:48px;  
+    left:0;  
+  
+    width:190px;  
+    height:42px;  
+  
+    border-radius:10px;  
+  
+    background:#ff91bb;  
+  
+    box-shadow:0 0 15px rgba(255,120,180,.5);  
+}  
+  
+.gift-ribbon-v{  
+    position:absolute;  
+    left:80px;  
+    bottom:0;  
+  
+    width:30px;  
+    height:132px;  
+  
+    background:#ffe0ec;  
+}  
+  
+.gift-ribbon-h{  
+    position:absolute;  
+    left:10px;  
+    top:48px;  
+  
+    width:170px;  
+    height:14px;  
+  
+    background:#ffe0ec;  
+}  
+  
+.bow-left,  
+.bow-right{  
+    position:absolute;  
+    top:18px;  
+  
+    width:48px;  
+    height:38px;  
+  
+    border-radius:50%;  
+    background:#ffd7e7;  
+}  
+  
+.bow-left{  
+    left:53px;  
+    transform:rotate(-25deg);  
+}  
+  
+.bow-right{  
+    right:53px;  
+    transform:rotate(25deg);  
+}  
+  
+/* =========================  
+   الصور  
+========================= */  
+  
+.gallery{  
+    display:grid;  
+    grid-template-columns:repeat(2,1fr);  
+    gap:14px;  
+}  
+  
+.photo{  
+    width:100%;  
+    height:220px;  
+  
+    object-fit:cover;  
+  
+    border-radius:22px;  
+  
+    border:2px solid rgba(255,100,160,.65);  
+  
+    box-shadow:  
+    0 0 20px rgba(255,30,120,.3);  
+  
+    transition:.35s;  
+  
+    cursor:pointer;  
+  
+    opacity:0;  
+  
+    animation:photoReveal .8s ease forwards;  
+}  
+  
+.photo:nth-child(1){animation-delay:.1s}  
+.photo:nth-child(2){animation-delay:.25s}  
+.photo:nth-child(3){animation-delay:.4s}  
+.photo:nth-child(4){animation-delay:.55s}  
+.photo:nth-child(5){animation-delay:.7s}  
+.photo:nth-child(6){animation-delay:.85s}  
+  
+@keyframes photoReveal{  
+    from{  
+        opacity:0;  
+        transform:translateY(35px) scale(.88);  
+    }  
+  
+    to{  
+        opacity:1;  
+        transform:translateY(0) scale(1);  
+    }  
+}  
+  
+.photo:hover{  
+    transform:scale(1.035) rotate(1deg);  
+}  
+  
+/* =========================  
+   تكبير الصور  
+========================= */  
+  
+.photo-viewer{  
+    position:fixed;  
+    inset:0;  
+  
+    z-index:10001;  
+  
+    display:flex;  
+    justify-content:center;  
+    align-items:center;  
+  
+    padding:20px;  
+  
+    background:rgba(0,0,0,.9);  
+  
+    backdrop-filter:blur(12px);  
+  
+    animation:overlayIn .3s ease;  
+}  
+  
+.photo-viewer.hidden{  
+    display:none;  
+}  
+  
+.photo-viewer img{  
+    max-width:95%;  
+    max-height:85vh;  
+  
+    object-fit:contain;  
+  
+    border-radius:24px;  
+  
+    border:2px solid rgba(255,120,180,.7);  
+  
+    box-shadow:  
+    0 0 35px rgba(255,30,120,.55),  
+    0 0 90px rgba(255,30,120,.2);  
+  
+    animation:photoZoom .4s ease;  
+}  
+  
+@keyframes photoZoom{  
+    from{  
+        opacity:0;  
+        transform:scale(.75);  
+    }  
+  
+    to{  
+        opacity:1;  
+        transform:scale(1);  
+    }  
+}  
+  
+.photo-close{  
+    position:absolute;  
+  
+    top:20px;  
+    left:20px;  
+  
+    width:45px;  
+    height:45px;  
+  
+    border:0;  
+    border-radius:50%;  
+  
+    background:#111;  
+    color:white;  
+  
+    font-size:30px;  
+  
+    cursor:pointer;  
+  
+    box-shadow:0 0 20px rgba(255,80,150,.4);  
+}  
+  
+/* =========================  
+   الموسيقى  
+========================= */  
+  
+.music-box{  
+    margin-top:30px;  
+  
+    padding:20px;  
+  
+    border-radius:25px;  
+  
+    background:  
+    rgba(255,255,255,.08);  
+  
+    border:1px solid rgba(255,150,200,.35);  
+  
+    box-shadow:  
+    0 0 25px rgba(255,30,120,.15);  
+}  
+  
+.music-title{  
+    color:#ffb4d2;  
+  
+    font-size:21px;  
+  
+    margin-bottom:15px;  
+}  
+  
+audio{  
+    width:100%;  
+    height:45px;  
+}  
+  
+.music-button{  
+    margin-top:12px;  
+  
+    border:1px solid rgba(255,150,200,.4);  
+  
+    padding:13px 22px;  
+  
+    border-radius:40px;  
+  
+    background:rgba(255,255,255,.08);  
+  
+    color:white;  
+  
+    font-size:17px;  
+  
+    cursor:pointer;  
+  
+    box-shadow:0 0 20px rgba(255,40,130,.2);  
+}  
+  
+/* =========================  
+   السؤال قبل النهاية  
+========================= */  
+  
+.end-question-overlay{  
+    position:fixed;  
+    inset:0;  
+  
+    z-index:10000;  
+  
+    display:flex;  
+    justify-content:center;  
+    align-items:center;  
+  
+    padding:20px;  
+  
+    background:rgba(0,0,0,.78);  
+  
+    backdrop-filter:blur(12px);  
+  
+    animation:overlayIn .4s ease;  
+}  
+  
+.end-question-box{  
+    width:100%;  
+    max-width:480px;  
+  
+    padding:40px 25px;  
+  
+    text-align:center;  
+  
+    border-radius:32px;  
+  
+    background:  
+    linear-gradient(  
+        145deg,  
+        rgba(255,255,255,.13),  
+        rgba(255,30,120,.12)  
+    );  
+  
+    border:1px solid rgba(255,150,200,.4);  
+  
+    box-shadow:  
+    0 0 35px rgba(255,20,110,.35);  
+  
+    animation:popupIn .45s ease;  
+}  
+  
+.end-question-heart{  
+    font-size:55px;  
+    margin-bottom:15px;  
+  
+    animation:pulse 1.5s infinite;  
+}  
+  
+.end-question-title{  
+    color:#ffb6d5;  
+    font-size:28px;  
+    line-height:1.6;  
+  
+    margin-bottom:12px;  
+}  
+  
+.end-question-text{  
+    color:#ffe5ef;  
+  
+    font-size:18px;  
+    line-height:1.8;  
+  
+    margin-bottom:25px;  
+}  
+  
+.end-question-buttons{  
+    display:flex;  
+    justify-content:center;  
+    gap:12px;  
+    flex-wrap:wrap;  
+}  
+  
+/* =========================  
+   الرسالة الأخيرة  
+========================= */  
+  
+.final-overlay{  
+    position:fixed;  
+    inset:0;  
+  
+    z-index:9999;  
+  
+    display:flex;  
+    justify-content:center;  
+    align-items:center;  
+  
+    padding:20px;  
+  
+    background:rgba(0,0,0,.58);  
+  
+    backdrop-filter:blur(7px);  
+    -webkit-backdrop-filter:blur(7px);  
+  
+    animation:overlayIn .35s ease;  
+}  
+  
+.final-popup{  
+    position:relative;  
+  
+    width:100%;  
+    max-width:570px;  
+  
+    max-height:82vh;  
+  
+    overflow-y:auto;  
+  
+    padding:55px 28px 30px;  
+  
+    border-radius:35px;  
+  
+    background:  
+    linear-gradient(  
+        145deg,  
+        rgba(255,255,255,.94),  
+        rgba(255,235,245,.88)  
+    );  
+  
+    border:3px solid rgba(190,100,255,.55);  
+  
+    box-shadow:  
+    0 0 20px rgba(190,100,255,.5),  
+    0 0 60px rgba(255,50,150,.25);  
+  
+    color:#5b2944;  
+  
+    animation:popupIn .45s ease;  
+}  
+  
+@keyframes overlayIn{  
+    from{opacity:0;}  
+    to{opacity:1;}  
+}  
+  
+@keyframes popupIn{  
+    from{  
+        opacity:0;  
+        transform:scale(.82) translateY(20px);  
+    }  
+  
+    to{  
+        opacity:1;  
+        transform:scale(1) translateY(0);  
+    }  
+}  
+  
+.close-popup{  
+    position:absolute;  
+  
+    top:18px;  
+    left:18px;  
+  
+    width:38px;  
+    height:38px;  
+  
+    padding:0;  
+  
+    border:0;  
+  
+    border-radius:50%;  
+  
+    background:#050505;  
+  
+    color:white;  
+  
+    font-size:23px;  
+  
+    line-height:38px;  
+  
+    cursor:pointer;  
+  
+    box-shadow:0 3px 10px rgba(0,0,0,.25);  
+}  
+  
+.close-popup:hover{  
+    transform:scale(1.08);  
+}  
+  
+.final-title{  
+    font-size:31px;  
+  
+    color:#a63d6c;  
+  
+    margin-bottom:25px;  
+  
+    text-shadow:  
+    0 0 10px rgba(255,80,150,.25);  
+}  
+  
+.typewriter{  
+    text-align:right;  
+  
+    font-size:20px;  
+    line-height:2.2;  
+  
+    color:#4d2639;  
+  
+    white-space:pre-wrap;  
+  
+    min-height:120px;  
+}  
+  
+.cursor{  
+    display:inline-block;  
+  
+    width:3px;  
+    height:23px;  
+  
+    background:#ff4d91;  
+  
+    margin-right:3px;  
+  
+    animation:blink .7s infinite;  
+}  
+  
+@keyframes blink{  
+    50%{opacity:0;}  
+}  
+  
+/* =========================  
+   التواريخ  
+========================= */  
+  
+.dates{  
+    margin-top:30px;  
+  
+    display:grid;  
+    gap:14px;  
+}  
+  
+.date-box{  
+    padding:17px;  
+  
+    border-radius:20px;  
+  
+    background:rgba(255,255,255,.55);  
+  
+    border:1px solid rgba(190,100,160,.25);  
+  
+    color:#612c47;  
+  
+    box-shadow:  
+    0 5px 18px rgba(160,50,100,.12);  
+}  
+  
+.date-title{  
+    font-size:16px;  
+    margin-bottom:7px;  
+  
+    color:#9a4269;  
+}  
+  
+.date-value{  
+    font-size:21px;  
+    font-weight:bold;  
+  
+    color:#542137;  
+}  
+  
+/* =========================  
+   القلوب  
+========================= */  
+  
+.floating-heart{  
+    position:fixed;  
+  
+    bottom:-50px;  
+  
+    pointer-events:none;  
+  
+    z-index:100;  
+  
+    animation:floatUp linear forwards;  
+}  
+  
+@keyframes floatUp{  
+    to{  
+        transform:  
+        translateY(-115vh)  
+        rotate(360deg);  
+  
+        opacity:0;  
+    }  
+}  
+  
+/* =========================  
+   مخفي  
+========================= */  
+  
+.hidden{  
+    display:none !important;  
+}  
+  
+.fade{  
+    animation:appear .8s ease;  
+}  
+  
+@keyframes appear{  
+    from{  
+        opacity:0;  
+        transform:translateY(20px);  
+    }  
+  
+    to{  
+        opacity:1;  
+        transform:translateY(0);  
+    }  
+}  
+  
+/* =========================  
+   الموبايل  
+========================= */  
+  
+@media(max-width:500px){  
+  
+    .main-name{  
+        font-size:50px;  
+    }  
+  
+    h1{  
+        font-size:29px;  
+    }  
+  
+    .message-text{  
+        font-size:21px;  
+    }  
+  
+    .gallery{  
+        gap:10px;  
+    }  
+  
+    .photo{  
+        height:170px;  
+    }  
+  
+    .typewriter{  
+        font-size:18px;  
+        line-height:2;  
+    }  
+  
+    .final-popup{  
+        max-height:86vh;  
+        padding:55px 20px 25px;  
+    }  
+  
+    .final-title{  
+        font-size:27px;  
+    }  
+  
+    .date-value{  
+        font-size:18px;  
+    }  
+  
+    .counter-grid{  
+        gap:5px;  
+    }  
+  
+    .counter-number{  
+        font-size:21px;  
+    }  
+  
+    .counter-label{  
+        font-size:10px;  
+    }  
+  
+    .counter-title{  
+        font-size:17px;  
+    }  
+  
+    .photo-viewer img{  
+        max-width:96%;  
+        max-height:78vh;  
+    }  
+  
+    .end-question-title{  
+        font-size:24px;  
+    }  
+}  
+
+  .quiz-section {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.quiz-section h2 {
+  color: #ff8fbd;
+  margin-bottom: 10px;
+}
+
+.quiz-intro {
+  color: #ffd6e7;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.quiz-card {
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,100,170,.25);
+  border-radius: 28px;
+  padding: 25px 18px;
+  box-shadow: 0 0 25px rgba(255,20,120,.1);
+}
+
+.quiz-number {
+  color: #ff7eaf;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.quiz-question {
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 10px 0;
+  padding: 14px;
+  border: 1px solid rgba(255,120,180,.3);
+  border-radius: 20px;
+  background: rgba(255,255,255,.08);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.quiz-option.selected {
+  background: rgba(255,50,130,.3);
+  border-color: #ff5ba0;
+}
+
+.quiz-next {
+  margin-top: 18px;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg,#ff176f,#ff5ba0);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.quiz-score {
+  font-size: 25px;
+  color: #ff8fbd;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.whatsapp-btn {
+  display: inline-block;
+  padding: 15px 25px;
+  border-radius: 30px;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+  
+</style>  
+</head>  
+  
+  
+<body>  
+  
+<div class="page">  
+  
+<div class="card">  
+  
+  
+<!-- =========================  
+     شاشة الباسورد  
+========================= -->  
+  
+<section id="passwordScreen" class="start-box">  
+  
+<div class="password-box">  
+  
+<div class="password-heart">  
+🔐💗  
+</div>  
+  
+<div class="password-title">  
+كل سنه وانتي طيبه يحوريتيي 🥺💗💗  
+</div>  
+  
+<div class="password-subtitle">  
+في حاجة صغيرة مستنياكي 😂💗  
+<br>  
+اكتبي الباسورد الأول 👀  
+</div>  
+  
+<input  
+    id="passwordInput"  
+    class="password-input"  
+    type="password"  
+    placeholder="Password"  
+    autocomplete="off"  
+    onkeydown="if(event.key==='Enter') checkPassword()"  
+>  
+  
+<button  
+    class="glow-button"  
+    onclick="checkPassword()">  
+💗 دخول  
+</button>  
+  
+<div  
+    id="passwordError"  
+    class="password-error">  
+غلط يهبلععع😂💗  
+</div>  
+  
+</div>  
+  
+</section>  
+  
+  
+<!-- =========================  
+     البداية  
+========================= -->  
+  
+<section id="start" class="start-box hidden">  
+  
+<div class="small-heart">💗</div>  
+  
+<div class="main-name">  
+حورية  
+</div>  
+  
+<div class="signature">  
+— حمو ✍️  
+</div>  
+  
+<div class="love">  
+بحبككك 😍💗  
+</div>  
+  
+<div class="start-text">  
+  
+عملتلك حاجة صغيرة كده 😂💗  
+  
+<br>  
+  
+يارب تعجبك وتكمليها للآخر 👀✨  
+  
+</div>  
+  
+<button class="glow-button" onclick="startSurprise()">  
+🎁 افتحي المفاجأة  
+</button>  
+  
+</section>  
+  
+  
+<!-- =========================  
+     المفاجأة  
+========================= -->  
+  
+<section id="surprise" class="hidden fade">  
+  
+<h1>  
+🎂 كل سنة وانتي طيبة يا حورية 🎂  
+</h1>  
+  
+<!-- العداد الجديد -->  
+  
+<div class="love-counter">  
+  
+<div class="counter-title">  
+⏳ بقالنا قد إيه من يوم ما عرفنا بعض؟ 💗  
+</div>  
+  
+<div class="counter-grid">  
+  
+<div class="counter-box">  
+<span id="counterDays" class="counter-number">0</span>  
+<span class="counter-label">يوم</span>  
+</div>  
+  
+<div class="counter-box">  
+<span id="counterHours" class="counter-number">0</span>  
+<span class="counter-label">ساعة</span>  
+</div>  
+  
+<div class="counter-box">  
+<span id="counterMinutes" class="counter-number">0</span>  
+<span class="counter-label">دقيقة</span>  
+</div>  
+  
+<div class="counter-box">  
+<span id="counterSeconds" class="counter-number">0</span>  
+<span class="counter-label">ثانية</span>  
+</div>  
+  
+</div>  
+  
+<div class="counter-date">  
+من 11 أكتوبر 2025 لحد دلوقتي 🥹💗  
+</div>  
+  
+</div>  
+  
+  
+<div class="message-card">  
+  
+<div id="messageText" class="message-text">  
+يارب يا حوريتي الهدية تعجبك 💗💗  
+</div>  
+  
+</div>  
+  
+<div class="progress">  
+<div id="progressBar" class="progress-bar"></div>  
+</div>  
+  
+<button  
+id="nextButton"  
+class="glow-button"  
+onclick="nextMessage()">  
+  
+💗 كملي  
+  
+</button>  
+  
+  
+<!-- =========================  
+     الهدية  
+========================= -->  
+  
+<div id="giftSection" class="gift-area hidden">  
+  
+<h2 class="section-title">  
+🎁 هانت... الهدية قربت  
+</h2>  
+  
+<div class="gift">  
+  
+<div class="bow-left"></div>  
+<div class="bow-right"></div>  
+  
+<div class="gift-lid"></div>  
+  
+<div class="gift-box"></div>  
+  
+<div class="gift-ribbon-v"></div>  
+<div class="gift-ribbon-h"></div>  
+  
+</div>  
+  
+<button class="glow-button" onclick="openGift()">  
+🎀 افتحي الهدية  
+</button>  
+  
+</div>  
+  
+  
+<!-- =========================  
+     محتوى الهدية  
+========================= -->  
+  
+<div id="giftContent" class="hidden fade">  
+  
+  
+<!-- الموسيقى -->  
+  
+<div class="music-box">  
+  
+<div class="music-title">  
+🎵    
+</div>  
+  
+<audio id="music" loop controls>  
+<source src="kelma.mp3" type="audio/mpeg">  
+المتصفح مش قادر يشغل الأغنية.  
+</audio>  
+  
+<button class="music-button" onclick="toggleMusic()">  
+🎵 تشغيل / إيقاف الأغنية  
+</button>  
+  
+</div>  
+  
+  
+<!-- الذكريات -->  
+  
+<h2 class="section-title">  
+
+  <div class="quiz-section" id="quizSection">
+
+  <h2>🎮 أسئلة حورية 😂💗</h2>
+
+  <p class="quiz-intro">
+    يلا نشوف حورية فاكرة حمو ولا لأ 😂💗<br>
+    جاوبي على كل الأسئلة للآخر 👀
+  </p>
+
+  <div id="quizBox"></div>
+
+  </div>
+  
+  
+<!-- النهاية -->  
+  
+<div style="margin-top:45px;">  
+  
+<button class="glow-button" onclick="openFinalQuestion()">  
+💌 افتحي الرسالة الأخيرة  
+</button>  
+  
+</div>  
+  
+  
 <!-- =========================
-     MATRIX BACKGROUND
+     نافذة السؤال
 ========================= -->
 
-<div class="matrix">
+<div id="questionOverlay" class="end-question-overlay hidden">
 
-<span style="left:5%;animation-duration:7s;">010101</span>
-<span style="left:15%;animation-duration:9s;animation-delay:1s;">777</span>
-<span style="left:25%;animation-duration:6s;animation-delay:2s;">010101</span>
-<span style="left:35%;animation-duration:8s;animation-delay:1s;">CYBER</span>
-<span style="left:45%;animation-duration:7s;">777</span>
-<span style="left:55%;animation-duration:10s;animation-delay:2s;">010101</span>
-<span style="left:65%;animation-duration:6s;">TEAM</span>
-<span style="left:75%;animation-duration:8s;animation-delay:1s;">777</span>
-<span style="left:85%;animation-duration:7s;">010101</span>
-<span style="left:95%;animation-duration:9s;">CYBER</span>
+    <div class="end-question-box">
 
-</div>
-
-
-<!-- =========================
-     LOGIN
-========================= -->
-
-<div id="loginScreen">
-
-    <div class="loginBox">
-
-        <div class="logo">
-            ⊀𝟕𝟕𝟕»
+        <div class="end-question-heart">
+            💗
         </div>
 
-        <div class="hamo">
-            ↝𝑲𝒊𝒏𝒈 𝑨𝒍𝒆𝒙⃝
+        <div class="end-question-title">
+            وصلتي للنهاية... 👀💗
         </div>
 
-        <div class="line"></div>
-
-        <p class="loginText">
-            🔐 منطقة خاصة بفريق ⊀𝟕𝟕𝟕»
-        </p>
-
-        <input
-            type="password"
-            id="password"
-            placeholder="اكتب الباسورد..."
-        >
-
-        <button class="btn" onclick="checkPassword()">
-            دخول ⚡
-        </button>
-
-        <div class="error" id="loginError"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     USER NAME
-========================= -->
-
-<div id="userScreen" class="hidden">
-
-    <div class="userBox">
-
-        <h2>
-            أهلاً بيك 👋
-        </h2>
-
-        <p>
-            قبل ما تدخل للموقع،
-            اكتب اسمك عشان نرحب بيك.
-        </p>
-
-        <input
-            type="text"
-            id="visitorName"
-            placeholder="اكتب اسمك هنا..."
-        >
-
-        <button class="btn" onclick="startWebsite()">
-            دخول للموقع 🚀
-        </button>
-
-        <div class="error" id="nameError"></div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     WEBSITE
-========================= -->
-
-<div id="website">
-
-
-<header>
-
-    <div class="hero">
-
-        <div class="tag">
-            مرحباً <span id="welcomeName"></span> 👋
-        </div>
-
-        <div class="heroLogo">
-            ⊀𝟕𝟕𝟕»
-        </div>
-
-        <h2>
-            𝑲𝒊𝒏𝒈 𝑨𝒍𝒆𝒙⃝🇪🇬
-        </h2>
-
-        <p>
-            مساحة فريق مهتم بالأمن السيبراني،
-            البرمجة، والتوعية الرقمية والهاكينج الأخلاقي.
+        <div class="end-question-text">
+          
             <br>
-            المعرفة قوة لما تستخدم في الخير.
-        </p>
-
-        <div class="owner">
-            👑 The Owner
-            <br>
-            𝑲𝒊𝒏𝒈 𝑨𝒍𝒆𝒙⃝🇪🇬
+            🥹💌
         </div>
 
-    </div>
-
-</header>
-
-
-<!-- =========================
-     QUIZ
-========================= -->
-
-<section id="quiz">
-
-    <div class="container">
-
-        <div class="sectionTitle">
-
-            <h2>
-                🧠 اختبار الأمن السيبراني
-            </h2>
-
-            <p>
-                جاوب على الأسئلة السبعة
-            </p>
-
-        </div>
-
-
-        <div class="question">
-
-            <h3>
-                1 - ما المقصود بالـ Cyber Security؟
-            </h3>
-
-            <label class="option">
-                <input type="radio" name="q1" value="1">
-                حماية الأنظمة والبيانات من التهديدات
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q1" value="0">
-                لعبة على الكمبيوتر
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q1" value="0">
-                برنامج لتعديل الصور
-            </label>
-
-        </div>
-
-
-        <div class="question">
-
-            <h3>
-                2 - ما هو الـ Phishing؟
-            </h3>
-
-            <label class="option">
-                <input type="radio" name="q2" value="1">
-                محاولة خداع المستخدم للحصول على معلومات
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q2" value="0">
-                نوع من أنواع الألعاب
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q2" value="0">
-                لغة برمجة
-            </label>
-
-        </div>
-
-
-        <div class="question">
-
-            <h3>
-                3 - ما أهمية كلمة المرور القوية؟
-            </h3>
-
-            <label class="option">
-                <input type="radio" name="q3" value="1">
-                تقليل احتمالية الوصول غير المصرح به
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q3" value="0">
-                جعل الجهاز أسرع
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q3" value="0">
-                زيادة مساحة التخزين
-            </label>
-
-        </div>
-
-
-        <div class="question">
-
-            <h3>
-                4 - ما معنى Ethical Hacking؟
-            </h3>
-
-            <label class="option">
-                <input type="radio" name="q4" value="1">
-                اختبار الأنظمة بإذن بهدف تحسين حمايتها
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q4" value="0">
-                اختراق أي شخص بدون إذن
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q4" value="0">
-                سرقة الحسابات
-            </label>
-
-        </div>
-
-
-        <div class="question">
-
-            <h3>
-                5 - ما فائدة تحديث البرامج؟
-            </h3>
-
-            <label class="option">
-                <input type="radio" name="q5" value="1">
-                إصلاح أخطاء وثغرات أمنية
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q5" value="0">
-                تغيير اسم الجهاز فقط
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q5" value="0">
-                حذف الإنترنت
-            </label>
-
-        </div>
-
-
-        <div class="question">
-
-            <h3>
-                6 - ماذا تفعل إذا وصلتك رسالة مشبوهة؟
-            </h3>
-
-            <label class="option">
-                <input type="radio" name="q6" value="1">
-                أتأكد من مصدرها ولا أضغط على الروابط المشبوهة
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q6" value="0">
-                أرسل بياناتي مباشرة
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q6" value="0">
-                أشاركها مع الجميع
-            </label>
-
-        </div>
-
-
-        <div class="question">
-
-            <h3>
-                7 - ما أهم قاعدة في الهاكينج الأخلاقي؟
-            </h3>
-
-            <label class="option">
-                <input type="radio" name="q7" value="1">
-                الحصول على إذن واحترام القانون
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q7" value="0">
-                اختراق أي نظام يعجبني
-            </label>
-
-            <label class="option">
-                <input type="radio" name="q7" value="0">
-                نشر بيانات الآخرين
-            </label>
-
-        </div>
-
-
-        <button class="btn" onclick="checkQuiz()">
-            إنهاء الاختبار ⚡
-        </button>
-
-        <div id="quizResult"></div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     TEAM
-========================= -->
-
-<section>
-
-    <div class="container">
-
-        <div class="sectionTitle">
-
-            <h2>
-                👑 أعضاء التيم
-            </h2>
-
-            <p>
-                ⊀𝟕𝟕𝟕»
-            </p>
-
-        </div>
-
-
-        <div class="teamGrid">
-
-
-            <div class="member">
-
-                <div class="memberIcon">
-                    👑
-                </div>
-
-                <h3>
-                    𝑲𝒊𝒏𝒈 𝑨𝒍𝒆𝒙⃝🇪🇬
-                </h3>
-
-                <p>
-                    The Owner
-                </p>
-
-            </div>
-
-
-            <div class="member">
-
-                <div class="memberIcon">
-                    ⚡
-                </div>
-
-                <h3>
-                    جو الحاكم⊀𝟕𝟕𝟕»
-                </h3>
-
-                <p>
-                    Team Member
-                </p>
-
-            </div>
-
-
-            <div class="member">
-
-                <div class="memberIcon">
-                    💻
-                </div>
-
-                <h3>
-                    ڪيمو اليڪس⊀𝟕𝟕𝟕»
-                </h3>
-
-                <p>
-                    Team Member
-                </p>
-
-            </div>
-
-
-            <div class="member">
-
-                <div class="memberIcon">
-                    🔥
-                </div>
-
-                <h3>
-                    بودا المشاكس⊀𝟕𝟕𝟕»🇪🇬
-                </h3>
-
-                <p>
-                    Team Member
-                </p>
-
-            </div>
-
+        <div class="end-question-buttons">
+
+            <button
+                class="glow-button"
+                onclick="revealFinalMessage()">
+                💗 أفتح
+            </button>
+
+            <button
+                class="music-button"
+                onclick="closeFinalQuestion()">
+                😂 لأ
+            </button>
 
         </div>
 
     </div>
-
-</section>
-
-
-<!-- =========================
-     WORKS
-========================= -->
-
-<section>
-
-    <div class="container">
-
-        <div class="sectionTitle">
-
-            <h2>
-                💻 معرض أعمال التيم
-            </h2>
-
-            <p>
-                مشاريع ومجالات الفريق
-            </p>
-
-        </div>
-
-
-        <div class="works">
-
-
-            <div class="work">
-
-                <div class="workIcon">
-                    🛡️
-                </div>
-
-                <h3>
-                    Cyber Security
-                </h3>
-
-                <p>
-                    توعية وحماية الأنظمة
-                    والمعلومات الرقمية.
-                </p>
-
-            </div>
-
-
-            <div class="work">
-
-                <div class="workIcon">
-                    💻
-                </div>
-
-                <h3>
-                    Web Development
-                </h3>
-
-                <p>
-                    تصميم وتطوير مواقع
-                    وصفحات ويب حديثة.
-                </p>
-
-            </div>
-
-
-            <div class="work">
-
-                <div class="workIcon">
-                    🔐
-                </div>
-
-                <h3>
-                    Ethical Hacking
-                </h3>
-
-                <p>
-                    اختبار أمان الأنظمة
-                    في نطاق مصرح به.
-                </p>
-
-            </div>
-
-
-            <div class="work">
-
-                <div class="workIcon">
-                    🎨
-                </div>
-
-                <h3>
-                    Team Branding
-                </h3>
-
-                <p>
-                    هوية وتصميمات خاصة
-                    بفريق ⊀𝟕𝟕𝟕».
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section>
-
-    <div class="container">
-
-        <div class="sectionTitle">
-
-            <h2>
-                ⚡ عن التيم
-            </h2>
-
-        </div>
-
-
-        <div class="aboutBox">
-
-            <strong>
-                ⊀𝟕𝟕𝟕»
-            </strong>
-
-            مش مجرد اسم،
-            دي هوية فريق بيحب التكنولوجيا
-            والتعلم والتطور.
-
-            <br><br>
-
-            بنهتم بالأمن السيبراني والبرمجة
-            والتوعية الرقمية،
-            وبنؤمن إن المعرفة الحقيقية
-            تستخدم في الخير والحماية.
-
-            <br><br>
-
-            <strong>
-                القوة في العلم،
-                والاحتراف في الأخلاق.
-            </strong>
-
-            <br><br>
-
-            الهاكينج الأخلاقي هدفه حماية الأنظمة
-            واكتشاف نقاط الضعف بإذن أصحابها،
-            مش الإضرار بالناس أو سرقة بياناتهم.
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     WHATSAPP
-========================= -->
-
-<section>
-
-    <div class="container">
-
-        <div class="whatsapp">
-
-            <div class="sectionTitle">
-
-                <h2>
-                    📱 قناة التيم
-                </h2>
-
-                <p>
-                    تابع آخر أخبار وتحديثات التيم
-                </p>
-
-            </div>
-
-
-            <a
-                href="https://whatsapp.com/channel/0029Vb3NahtDuMRfVFy1KN0E"
-                target="_blank"
-            >
-                دخول قناة الواتساب 🚀
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-    <div>
-        ⊀𝟕𝟕𝟕»
-    </div>
-
-    <div class="hamoFooter">
-        Editor The Web : Hamo 💗
-    </div>
-
-    <div style="margin-top:12px;">
-        Ethical Hacking • Cyber Security • Team
-    </div>
-
-</footer>
-
 
 </div>
 
 
-<!-- TOP BUTTON -->
+<!-- =========================
+     تكبير الصور
+========================= -->
 
-<button
-    class="topBtn"
-    id="topBtn"
-    onclick="window.scrollTo({top:0,behavior:'smooth'})"
+<div
+    id="photoViewer"
+    class="photo-viewer hidden"
+    onclick="closePhoto(event)"
 >
-    ↑
-</button>
+
+    <button
+        class="photo-close"
+        onclick="closePhoto()">
+        ×
+    </button>
+
+    <img
+        id="viewerImage"
+        src=""
+        alt="صورة مكبرة"
+    >
+
+</div>
+
+
+<!-- =========================
+     الرسالة الأخيرة
+========================= -->
+
+<div
+    id="finalOverlay"
+    class="final-overlay hidden"
+>
+
+    <div class="final-popup">
+
+        <button
+            class="close-popup"
+            onclick="closeFinalMessage()">
+            ×
+        </button>
+
+        <div class="final-title">
+            💌 رسالة ليكي
+        </div>
+
+        <div
+            id="typewriter"
+            class="typewriter">
+        </div>
+
+        <div class="dates">
+
+            <div class="date-box">
+
+                <div class="date-title">
+                    💗 أول يوم
+                </div>
+
+                <div class="date-value">
+                    11/10/2025
+                </div>
+
+            </div>
+
+            <div class="date-box">
+
+                <div class="date-title">
+                    🕐 اول مره اقولك بحبك 
+                </div>
+
+                <div class="date-value">
+                    03/11/2025 — الساعة 10:45
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+</div>
+
+</div>
 
 
 <script>
 
 /* =========================
-   PASSWORD
+   الباسورد
 ========================= */
+
+const password = "Houria";
 
 function checkPassword(){
 
-    const password =
-        document.getElementById("password").value;
+    const input =
+        document.getElementById("passwordInput");
 
     const error =
-        document.getElementById("loginError");
+        document.getElementById("passwordError");
 
-    if(password === "777"){
+    const passwordScreen =
+        document.getElementById("passwordScreen");
 
-        document.getElementById("loginScreen")
-            .classList.add("hidden");
+    const start =
+        document.getElementById("start");
 
-        document.getElementById("userScreen")
-            .classList.remove("hidden");
+    if(input.value === password){
+
+        passwordScreen.classList.add("hidden");
+
+        start.classList.remove("hidden");
+
+        createHearts();
 
     }else{
 
-        error.textContent =
-            "الباسورد غلط ❌ حاول تاني";
+        error.style.display = "block";
+
+        input.value = "";
+
+        input.focus();
+
+        setTimeout(() => {
+
+            error.style.display = "none";
+
+        },1800);
 
     }
 
 }
 
 
-/* Enter للدخول */
+/* =========================
+   الرسائل
+========================= */
 
-document
-.getElementById("password")
-.addEventListener("keydown",function(e){
+const messages = [
 
-    if(e.key === "Enter"){
-        checkPassword();
+    "من أول يوم دخلتي فيه حياتي وأنا حاسس إن في حاجة اتغيرت جوايا 💗",
+
+    "بقيتي من أكتر الناس اللي وجودهم بيفرق معايا بجد 🥹",
+
+    " في لعبه بقا اسئله وكده دي لازم تتحل كلها صح 😂 ",
+
+    " وفي رساله تحت العبه دوس عليها و اقريها متنسيش",
+
+    "وكل سنه وانتي طيبه ي قلبييي بحبك اوي 🫶",
+
+    "وعشان كده عملتلك المفاجأة دي مخصوص... 💗"
+
+];
+
+let messageIndex = 0;
+
+
+function startSurprise(){
+
+    document
+        .getElementById("start")
+        .classList.add("hidden");
+
+    document
+        .getElementById("surprise")
+        .classList.remove("hidden");
+
+    updateCounter();
+
+    createHearts();
+
+}
+
+
+function nextMessage(){
+
+    const text =
+        document.getElementById("messageText");
+
+    const progress =
+        document.getElementById("progressBar");
+
+    const button =
+        document.getElementById("nextButton");
+
+    if(messageIndex < messages.length){
+
+        text.style.animation = "none";
+
+        void text.offsetWidth;
+
+        text.style.animation = "messageIn .7s ease";
+
+        text.textContent =
+            messages[messageIndex];
+
+        messageIndex++;
+
+        const progressValue =
+            (messageIndex / messages.length) * 100;
+
+        progress.style.width =
+            progressValue + "%";
+
+        if(messageIndex === messages.length){
+
+            button.textContent =
+                "🎁 كملي للمفاجأة";
+
+        }
+
+    }else{
+
+        document
+            .getElementById("nextButton")
+            .classList.add("hidden");
+
+        document
+            .getElementById("giftSection")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("giftSection")
+            .classList.add("fade");
+
+        createHearts();
+
     }
 
-});
+}
 
 
 /* =========================
-   USER NAME
+   الهدية
 ========================= */
 
-function startWebsite(){
+function openGift(){
 
-    const name =
-        document.getElementById("visitorName")
-        .value.trim();
+    const giftSection =
+        document.getElementById("giftSection");
 
-    const error =
-        document.getElementById("nameError");
+    const giftContent =
+        document.getElementById("giftContent");
 
-    if(name === ""){
+    giftSection.classList.add("hidden");
 
-        error.textContent =
-            "اكتب اسمك الأول 👀";
+    giftContent.classList.remove("hidden");
 
+    giftContent.classList.add("fade");
+
+    createHearts();
+
+}
+
+
+/* =========================
+   الموسيقى
+========================= */
+
+function toggleMusic(){
+
+    const music =
+        document.getElementById("music");
+
+    if(music.paused){
+
+        music.play();
+
+    }else{
+
+        music.pause();
+
+    }
+
+}
+
+
+/* =========================
+   السؤال الأخير
+========================= */
+
+function openFinalQuestion(){
+
+    const overlay =
+        document.getElementById("questionOverlay");
+
+    overlay.classList.remove("hidden");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeFinalQuestion(){
+
+    const overlay =
+        document.getElementById("questionOverlay");
+
+    overlay.classList.add("hidden");
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+/* =========================
+   فتح الرسالة الأخيرة
+========================= */
+
+function revealFinalMessage(){
+
+    closeFinalQuestion();
+
+    openFinalMessage();
+
+}
+
+
+/* =========================
+   الرسالة النهائية
+========================= */
+
+const finalMessage = `حورية ❤️
+
+اي يحور عامله اييي تميتي ال14 سنه بقااا 😂💗💗
+
+بقالنا سنه مع بعض تعرفي أن دي احسن سنه ف حياتي بجد و على فكره بحبك اوي و طول السنه عمري ما حبي قل و لا هيقل.
+
+بخاف يجي وقت ونبعد وماليش غيرك ف الدنيا دي. خدو مني كل حاجه بس هي لا، هي دنيتي وحبيبتي وكل حاجه ليا.
+
+بتمنى انك تفضلي جمبي طول العمر. انا مليش غيرك، مش بعرف احكي لحد همي غيرك، سري مش مع حد غيرك، ومحدش عارف اللي جوايا غيرك.
+
+انتي الوحيده اللي تقدري تخليني كويس، انتي اللي بتفهميني من غير ما اتكلم، بتعرفي اني زعلان، وانتي اللي حاسه بيا.
+
+انتي كل حاجه ليا يا اغلى من نور عيني. مهما شوفت مبشوفش احسن منك، ولا اجمل منك، ولا هشوف حد زيك. انتي مفيش حد زيك.
+
+كفايه ان مبيهونش عليكي انا. انا بحمد ربنا ع وجودك ف حياتي وبدعي ربنا انك تفضلي جمبي ومتبعيديش عني.
+
+الدنيا عندي من غيرك ناقصها حاجه كبيرة، وانا من غيرك بتوه. خليكي معايا ع طول ومتبعديش عني يوم.
+
+انا بحبك اكتر من نفسي .
+
+انتي حياتي كلها، وانتي اللي بتخليني اشوف الدنيا بشكل أحسن. بشكرك انك ف حياتي، وبشكرك بجد انك موجودة ومحلية دنيتي.
+
+بحبك يا اغلى ما لياااااااا 😭💗💗💗💗🥹🏠
+
+انا مبسوط اوي عموماً عشان انتي معايا، وياريت تحبيني زي ما انا بحبك. مش عايز اكتر من كده
+
+احسن سنه ف حياتي قعدتها معاكي و داخلين ف التانيه و بأذن الله مع بعض طول العمر و بوعدك اني عمري ما هسيبك حتى لو زعلت منك ولا عمري هخونك عشان بحبك اويييييييي .
+
+ حمو ❤️`;
+
+
+let typingTimer = null;
+let typingIndex = 0;
+
+
+function openFinalMessage(){
+
+    const overlay =
+        document.getElementById("finalOverlay");
+
+    overlay.classList.remove("hidden");
+
+    document.body.style.overflow =
+        "hidden";
+
+    restartTyping();
+
+    createHearts();
+
+}
+
+
+function closeFinalMessage(){
+
+    const overlay =
+        document.getElementById("finalOverlay");
+
+    overlay.classList.add("hidden");
+
+    document.body.style.overflow =
+        "";
+
+    if(typingTimer){
+
+        clearTimeout(typingTimer);
+
+        typingTimer = null;
+
+    }
+
+}
+
+
+function restartTyping(){
+
+    const element =
+        document.getElementById("typewriter");
+
+    if(typingTimer){
+
+        clearTimeout(typingTimer);
+
+    }
+
+    typingIndex = 0;
+
+    element.innerHTML =
+        '<span class="cursor"></span>';
+
+    typeNextCharacter();
+
+}
+
+
+function typeNextCharacter(){
+
+    const element =
+        document.getElementById("typewriter");
+
+    if(typingIndex < finalMessage.length){
+
+        const cursor =
+            element.querySelector(".cursor");
+
+        const character =
+            finalMessage.charAt(typingIndex);
+
+        cursor.insertAdjacentText(
+            "beforebegin",
+            character
+        );
+
+        typingIndex++;
+
+        typingTimer =
+            setTimeout(
+                typeNextCharacter,
+                28
+            );
+
+    }
+
+}
+
+
+/* =========================
+   الصور
+========================= */
+
+function openPhoto(src){
+
+    const viewer =
+        document.getElementById("photoViewer");
+
+    const image =
+        document.getElementById("viewerImage");
+
+    image.src = src;
+
+    viewer.classList.remove("hidden");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closePhoto(event){
+
+    const viewer =
+        document.getElementById("photoViewer");
+
+    if(
+        event &&
+        event.target !== viewer
+    ){
         return;
     }
 
-    document.getElementById("welcomeName")
-        .textContent = name;
+    viewer.classList.add("hidden");
 
-    document.getElementById("userScreen")
-        .classList.add("hidden");
-
-    document.getElementById("website")
-        .style.display = "block";
-
-    window.scrollTo(0,0);
+    document.body.style.overflow =
+        "";
 
 }
 
 
 /* =========================
-   QUIZ
+   عداد الوقت
 ========================= */
 
-function checkQuiz(){
+const startDate =
+    new Date("2025-10-11T00:00:00");
 
-    let score = 0;
 
-    for(let i=1;i<=7;i++){
+function updateCounter(){
 
-        const answer =
-            document.querySelector(
-                'input[name="q'+i+'"]:checked'
+    const now =
+        new Date();
+
+    let difference =
+        now.getTime() -
+        startDate.getTime();
+
+    if(difference < 0){
+
+        difference = 0;
+
+    }
+
+    const totalSeconds =
+        Math.floor(
+            difference / 1000
+        );
+
+    const days =
+        Math.floor(
+            totalSeconds / 86400
+        );
+
+    const hours =
+        Math.floor(
+            (totalSeconds % 86400) / 3600
+        );
+
+    const minutes =
+        Math.floor(
+            (totalSeconds % 3600) / 60
+        );
+
+    const seconds =
+        totalSeconds % 60;
+
+
+    document.getElementById("counterDays")
+        .textContent = days;
+
+    document.getElementById("counterHours")
+        .textContent =
+        String(hours).padStart(2,"0");
+
+    document.getElementById("counterMinutes")
+        .textContent =
+        String(minutes).padStart(2,"0");
+
+    document.getElementById("counterSeconds")
+        .textContent =
+        String(seconds).padStart(2,"0");
+
+}
+
+
+updateCounter();
+
+setInterval(
+    updateCounter,
+    1000
+);
+
+
+/* =========================
+   القلوب المتحركة
+========================= */
+
+function createHearts(){
+
+    const heartSymbols = [
+        "💗",
+        "💖",
+        "💕",
+        "💓",
+        "💞",
+        "❤️"
+    ];
+
+    for(let i = 0; i < 6; i++){
+
+        setTimeout(() => {
+
+            const heart =
+                document.createElement("div");
+
+            heart.className =
+                "floating-heart";
+
+            heart.textContent =
+                heartSymbols[
+                    Math.floor(
+                        Math.random() *
+                        heartSymbols.length
+                    )
+                ];
+
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+            heart.style.fontSize =
+                (18 + Math.random() * 25) + "px";
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 4) + "s";
+
+            document.body.appendChild(
+                heart
             );
 
-        if(answer){
-            score += Number(answer.value);
+            setTimeout(() => {
+
+                heart.remove();
+
+            },9000);
+
+        }, i * 350);
+
+    }
+
+}
+
+
+/* =========================
+   زر ESC
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closePhoto();
+
+            closeFinalQuestion();
+
+            closeFinalMessage();
+
         }
 
     }
-
-    const result =
-        document.getElementById("quizResult");
-
-    if(score === 7){
-
-        result.innerHTML =
-        "🔥 جامد! 7/7 — إجاباتك كلها صحيحة.";
-
-    }else if(score >= 5){
-
-        result.innerHTML =
-        "⚡ ممتاز! نتيجتك "+score+"/7";
-
-    }else if(score >= 3){
-
-        result.innerHTML =
-        "💻 كويس، نتيجتك "+score+"/7 — كمل تعلم.";
-
-    }else{
-
-        result.innerHTML =
-        "🛡️ نتيجتك "+score+"/7 — الأمن السيبراني محتاج ممارسة وتعلم.";
-
-    }
-
-}
-
-
-/* =========================
-   TOP BUTTON
-========================= */
-
-window.addEventListener("scroll",function(){
-
-    const btn =
-        document.getElementById("topBtn");
-
-    if(window.scrollY > 500){
-        btn.style.display = "block";
-    }else{
-        btn.style.display = "none";
-    }
-
-});
+);
 
 </script>
 
+<script>
+const myWhatsApp = "201227428652";
 
+  const quizQuestions = [
+  {
+    question: "أول يوم عرفنا بعض كان إمتى؟ 🥹💗",
+    options: ["2025/10/5", "2025/10/11", "2025/11/3", "2025/9/11"],
+    correct: 1
+  },
+  {
+    question: "عيد ميلاد حورية إمتى؟ 🎂💗",
+    options: ["1/10", "3/11", "5/10", "11/10"],
+    correct: 2
+  },
+  {
+    question: "عيد ميلاد حمو إمتى؟ 😂🎂",
+    options: ["5/10", "1/10", "11/10", "3/11"],
+    correct: 1
+  },
+  {
+    question: "مين فينا بيزعل أسرع؟ 😂💗",
+    options: ["حورية 😂", "حمو 😂", "الاتنين", "ولا واحد"],
+    correct: 0
+  },
+  {
+    question: "مين فينا بيبدأ الصلح غالبًا؟ 👀❤️",
+    options: ["حورية", "حمو حمو حمو حمو 😂", "الاتنين", "محدش 😂"],
+    correct: 1
+  },
+  {
+    question: "إيه أكتر حاجة حمو بيحبها في حورية؟ 🥹💗",
+    options: ["ضحكتها", "كلامها", "شخصيتها", "كل حاجة فيها ❤️"],
+    correct: 3
+  },
+  {
+    question: "لما حمو يقولك «نامي يا حورية» بيكون قصده إيه؟ 😂",
+    options: ["عايزني أنام", "بيرخم وبيهزر 😂", "زعلان", "مش عايز يتكلم"],
+    correct: 1
+  },
+  {
+    question: "إيه أكتر تاريخ مهم عندنا؟ 👀💗",
+    options: ["2025/10/11", "2025/11/3", "2026/10/1", "2026/10/5"],
+    correct: 0
+  },
+  {
+    question: "لو حصل بينا خلاف، نعمل إيه؟ ❤️",
+    options: ["نبعد", "نسكت", "عمر ما يحصل خلاف بينا 😂❤️", "كل واحد يروح لحاله"],
+    correct: 2
+  },
+  {
+    question: "لما حمو يقول بس غالبًا حورية بتعمل إيه؟ 😂",
+    options: ["اكتم ", " بس ", " بس يا اهبل ", " كلهم "],
+    correct: 3
+  },
+  {
+    question: "مين فينا بيكسب في الرخامة؟ 🏆😂",
+    options: ["حورية", "حمو", "محدش", "التعادل الأبدي 😂"],
+    correct: 3
+  },
+  {
+    question: "لو حورية زعلانة، حمو غالبًا هيعمل إيه؟ 😂❤️",
+    options: ["يسيبها", "يراضيها", "يرخم عليها عشان تضحك", "يعمل التلاتة 😂❤️"],
+    correct: 3
+  },
+  {
+    question: "لما حمو يرخم على حورية، حورية بتعمل إيه؟ 😂",
+    options: ["تضحك", "تزعقله", "ترد برخامته", "كل اللي فوق 😂"],
+    correct: 3
+  },
+  {
+    question: "مين فينا عنده موهبة الرخامة أكتر؟ 😂😂",
+    options: ["حورية", "حمو", "الاتنين منافسة 😂", "محدش بريء 😂"],
+    correct: 2
+  },
+  {
+    question: "لو حمو فضل يرخم طول اليوم، حورية هتعمل إيه؟ 😂",
+    options: ["هتستحمله", "هترخم أكتر", "هتقوله اسكت", "هتضحك 😂"],
+    correct: 3
+  },
+  {
+    question: "لو حمو بطل يرخم يوم كامل، إيه اللي هيحصل؟ 😂💗",
+    options: ["هتستغرب", "هتقول أخيرًا", "هتفتقد الرخامة", "هتقول حمو إنت كويس؟ 😂"],
+    correct: 3
+  },
+  {
+    question: "مين فينا بيقول «أنا مش زعلان» وهو زعلان؟ 😂",
+    options: ["حورية", "حمو", "الاتنين 😂", "ولا واحد"],
+    correct: 2
+  },
+  {
+    question: "لما حمو يقول «براحتك» بيكون قصده إيه؟ 😂👀",
+    options: ["براحتك فعلًا", "أكيد براحتك", "مش براحتك أوي 😂", "مش عارف"],
+    correct: 2
+  },
+  {
+    question: "مين فينا بيعرف إن التاني زعلان من غير ما يتكلم؟ 👀💗",
+    options: ["حورية", "حمو", "الاتنين ❤️", "ولا واحد"],
+    correct: 2
+  },
+  {
+    question: "لو الاتنين قالوا «مش هنتخانق» إيه اللي غالبًا هيحصل؟ 😂",
+    options: ["مش هنتخانق", "هنضحك", "هنبدأ نرخم على بعض 😂", "هننام"],
+    correct: 2
+  },
+  {
+    question: "إيه أكتر حاجة ممكن تخلي حورية تضحك من حمو؟ 😂💗",
+    options: ["رخامته", "هزاره", "كلامه العشوائي", "كل دول ❤️"],
+    correct: 3
+  },
+  {
+    question: "لو حمو زعلان، حورية غالبًا هتعمل إيه؟ 🥹❤️",
+    options: ["تسيبه", "تسأله ماله وتحاول تفرحه", "تزعقله 😂", "تعمل نفسها مش واخدة بالها"],
+    correct: 1
+  },
+  {
+    question: "مين فينا يقول «آخر مرة أرخم عليك» ويرجع يرخم بعدها بدقيقتين؟ 😂😂",
+    options: ["حورية", "حمو 😂", "الاتنين", "محدش"],
+    correct: 1
+  },
+  {
+    question: "آخر سؤال ومصيري جدًا 👀💗... حورية بتحب حمو؟ 😂",
+    options: ["أيوه ", "لأ" , "هفكر" , "حمو ده جزمه"],
+    correct: 0
+  }
+];
+
+let currentQuestion = 0;
+let userAnswers = [];
+
+function showQuestion() {
+
+  const box = document.getElementById("quizBox");
+  const q = quizQuestions[currentQuestion];
+
+  box.innerHTML = `
+    <div class="quiz-card">
+
+      <div class="quiz-number">
+        السؤال ${currentQuestion + 1} من ${quizQuestions.length}
+      </div>
+
+      <div class="quiz-question">
+        ${q.question}
+      </div>
+
+      ${q.options.map((option, index) => `
+        <button
+          class="quiz-option"
+          onclick="selectAnswer(${index})">
+          ${option}
+        </button>
+      `).join("")}
+
+      <button
+        class="quiz-next"
+        id="quizNext"
+        onclick="nextQuestion()"
+        style="display:none;">
+        ${currentQuestion === quizQuestions.length - 1
+          ? "💗 خلصنااا"
+          : "السؤال اللي بعده 👀"}
+      </button>
+
+    </div>
+  `;
+}
+
+function selectAnswer(index) {
+
+  userAnswers[currentQuestion] = index;
+
+  document.querySelectorAll(".quiz-option").forEach(button => {
+    button.classList.remove("selected");
+  });
+
+  event.target.classList.add("selected");
+
+  document.getElementById("quizNext").style.display = "inline-block";
+}
+
+function nextQuestion() {
+
+  if (userAnswers[currentQuestion] === undefined) {
+    return;
+  }
+
+  if (currentQuestion < quizQuestions.length - 1) {
+
+    currentQuestion++;
+
+    showQuestion();
+
+  } else {
+
+    showQuizResult();
+
+  }
+}
+
+function showQuizResult() {
+
+  let score = 0;
+
+  quizQuestions.forEach((q, i) => {
+
+    if(userAnswers[i] === q.correct){
+      score++;
+    }
+
+  });
+
+  const answers = quizQuestions.map((q, i) => {
+
+    return `${i + 1}. ${q.question}
+إجابتها: ${q.options[userAnswers[i]]}`;
+
+  }).join("\n\n");
+
+  const message = `إجابات حورية في الكويز 😂💗
+
+${answers}
+
+النتيجة: ${score}/${quizQuestions.length}
+
+حورية خلصت الكويز يا حمو 😂💗`;
+
+  const whatsappLink =
+    "https://wa.me/" +
+    myWhatsApp +
+    "?text=" +
+    encodeURIComponent(message);
+
+  document.getElementById("quizBox").innerHTML = `
+
+    <div class="quiz-card">
+
+      <div class="quiz-score">
+        خلصنااا 😂💗
+      </div>
+
+      <p style="color:#ffd6e7; line-height:1.8;">
+        عاش يا حورية 😂❤️<br>
+        دلوقتي ابعتي الإجابات لحمو وشوفي هيقولك إيه 👀💗
+      </p>
+
+      <a
+        class="whatsapp-btn"
+        href="${whatsappLink}"
+        target="_blank">
+        📱 ابعتي الإجابات لحمو يا خيبة 😂💗
+      </a>
+
+    </div>
+
+  `;
+}
+
+showQuestion();
+</script>
+  
 </body>
+
 </html>
